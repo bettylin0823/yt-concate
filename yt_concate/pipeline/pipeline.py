@@ -9,7 +9,7 @@ class Pipeline:
         data = None
         for step in self.steps:
             try:
-                date = step.process(data, inputs)
+                data = step.process(data, inputs)
             except StepException as e:
                 print('Exception happened:', e)
                 break
