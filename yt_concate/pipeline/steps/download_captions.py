@@ -16,12 +16,15 @@ class DownloadCaptions(Step):
             ydl_opts = {
                 'skip_download': True,
                 'writeautomaticsub': True,
+                'allsubtitles': False,
+                'subtitlesformat': 'vtt',
                 'subtitlelengs': 'en',
                 'outtmpl': utils.get_caption_filepath(url),
                 'nooverwrites': True,
             }
             with YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
+            break
 
         end = time.time()
         print('took', end - start, 'seconds')
